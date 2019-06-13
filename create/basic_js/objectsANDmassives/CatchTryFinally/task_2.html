@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // Напишите интерфейс, который принимает математическое выражение (в prompt)
+    // и выводит результат его вычисления через eval.
+    //
+    //     При ошибке нужно выводить сообщение и просить переввести выражение.
+    //
+    //     Ошибкой считается не только некорректное выражение, такое как 2+, но и выражение,
+    //     возвращающее NaN, например 0/0.
+
+    function ReadError(message, cause) {
+        this.message = message;
+        this.cause = cause;
+        this.name = 'ReadError';
+        this.stack = cause.stack;
+    }
+
+
+    function calculator() {
+
+        var enterData = prompt('Введите числовое выражение', '5+53');
+
+        try {
+            var result = eval('alert(' + enterData + ')');
+        }
+
+        catch (e) {
+
+            if (e.name === 'URIError') {
+                throw new ReadError("Ошибка в URI", e);
+            } else if (e.name === 'SyntaxError') {
+                throw new ReadError("Синтаксическая ошибка в данных", e);
+            } else if (e.name === 'TypeError') {
+                throw new ReadError("Синтаксическая ошибка в данных", e);
+            } else {
+                throw e; // пробрасываем
+            }
+        }
+
+finally {
+            alert('Спасибо, что выбрали данную программу!')
+        }
+    return result;
+    }
+
+    try {
+        calculator();
+    } catch (e) {
+        if (e.name === 'ReadError') {
+            alert( e.message );
+            alert( e.cause ); // оригинальная ошибка-причина
+        } else {
+            throw e;
+        }
+    }
+
+
+  //  calculator();
+
+</script>
+</body>
+</html>

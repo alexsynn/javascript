@@ -1,0 +1,15 @@
+console.log(alert)
+VM173:1 ƒ alert() { [native code] }
+undefined
+let alert = function (x) {console.log("x is:", x);}
+undefined
+alert(12345)
+VM247:1 x is: 12345
+undefined
+alert = "string 12345";
+"string 12345"
+alert
+"string 12345"
+alert(12345)
+VM333:1 Uncaught TypeError: alert is not a function
+    at <anonymous>:1:1

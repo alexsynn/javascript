@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    var calculator = {
+        read: function () {
+            var a = prompt('Enter a', '');
+            if ((a !== '') && (isNaN(+a) === false)) {
+                this.a = +a;
+                                var b = prompt('Enter b', '');
+                if ((b !== '') && (isNaN(+b) === false)) {
+                    this.b = +b;
+                } else {
+                    console.log('It is not a number');
+                    this.b = 0;
+                    this.a = 0;
+                }
+            } else {
+                console.log('It is not a number');
+                this.a = 0;
+                this.b = 0;
+            }
+        },
+        sum: function () {
+            return this.a + this.b;
+        },
+        mul: function () {
+            return this.a * this.b;
+        }
+    };
+
+    calculator.read();
+    console.log(calculator.sum());
+    console.log(calculator.mul());
+
+</script>
+</body>
+</html>

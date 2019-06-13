@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //Смотреть задачу 1, делать аналогично.
+
+    function filter(arr, func) {
+        var arrResult = [];
+        for (var i = 0; i < arr.length; i++) {
+            var val = arr[i];
+            if (func(val)) {
+                arrResult.push(val);
+            }
+        }
+        return arrResult;
+    }
+
+    function inBetween(a, b) {
+        return function (param) {
+            if ((param >= a) && (param <= b)) {
+                return param;
+            }
+            return false;
+        }
+    }
+
+    function inArray(array) {
+        return function (param) {
+            for (var i = 0; i < array.length; i++) {
+                if (param === array[i]) {
+                    return param;
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
+
+        var arr = [1, 2, 3, 4, 5, 6, 7];
+        //console.log(filter(arr, inBetween(3, 6)));
+        console.log(filter(arr, inArray([1, 2, 10])));
+
+        var myArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        //console.log(filter(myArr, inBetween(3, 6)));
+        console.log(filter(myArr, inArray([1, 2, 10])));
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function Calculator() {///////
+
+        this.calculate = function (param) {//%%%%%%%%%%%%
+            var enterString = param;
+
+            //var enterString = prompt('Введите строку', 'Ваша строка');
+
+            function counter(param) {
+
+                if (param.length >= 5) {
+                    var counter = 0;
+                    for (var i = 0; i < param.length; i++) {
+                        if (Number(param[i])) {
+                            counter++;
+                        }
+                    }
+                    if (param.length - counter === 3) {
+                        return function subStr(param) {
+                            if (param) {
+                                if ((param.indexOf(' + ') === 1 || param.indexOf(' - ') === 1)
+                                    && (param[0] !== '' && param[param.length - 1] !== '')) {
+                                    return param;
+                                }
+                            } else return function () {
+                                return false;
+                            }
+                        }
+                    }
+                } else {
+                    return function () {
+                        return false;
+                    }
+                }
+            }
+
+            var srtResult = counter(enterString)();
+            if (srtResult()) {
+                return function () {
+
+                    //var arr = srtResult.split(' ' + operation + ' ');
+
+                    var arr = srtResult().split(' + ');
+                    var sumResult = (+arr[0]) + (+arr[1]);
+                    return sumResult;
+
+                }
+            } else {
+                return function () {
+                    return console.log('ERROR');
+                }
+            }
+
+        }//%%%%%%%%%%%%%
+    }///////
+
+    var calc = new Calculator;
+
+    console.log(calc.calculate("3 + 7")()); // 10
+</script>
+</body>
+</html>

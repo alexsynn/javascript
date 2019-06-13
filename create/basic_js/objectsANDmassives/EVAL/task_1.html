@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    // Eval-калькулятор
+    // важность: 4
+    // Напишите интерфейс, который принимает математическое выражение (prompt) и возвращает его результат.
+    //
+    //     Проверять выражение на корректность не требуется.
+
+    function calculator() {
+        var enterData = prompt('Введите числовое выражение', '5+53');
+        return eval('alert(' + enterData + ')');
+
+    }
+
+    var enterData = prompt('Введите числовое выражение', '5+53');
+    f = new Function('', 'return ' + enterData);
+
+
+    calculator();
+
+    alert(f());
+
+
+</script>
+</body>
+</html>

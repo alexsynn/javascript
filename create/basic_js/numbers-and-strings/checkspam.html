@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function checkSpam(str) {
+        var toLowStr = str.toLowerCase();
+
+        if ((toLowStr.indexOf("viagra") !== -1) || (toLowStr.indexOf("xxx") !== -1)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    console.log(checkSpam("innocent rabbit"));
+    console.log(checkSpam('buy ViAgRA now'));
+    console.log(checkSpam('free xxxxx'));
+
+    //?????????????????????????????????????????????????????????????????? what is the difference
+    /*function checkSpam(str) {
+     var toLowStr = str.toLowerCase();
+
+       if ((toLowStr.indexOf("viagra") === -1) || (toLowStr.indexOf("xxxxx") === -1)) {
+       return false;
+       }
+       else {return true;}
+   }
+   alert(checkSpam("innocent rabbit"));
+   alert(checkSpam('buy ViAgRA now'));
+   alert(checkSpam('free xxxxx'));*/
+
+
+</script>
+</body>
+</html>

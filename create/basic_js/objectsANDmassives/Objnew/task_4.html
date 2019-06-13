@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Calculator() {
+
+
+        this.calculate = function () {
+            var enterString = prompt('Введите строку в формате: число - пробел - математическая операция-пробел-число', 'Ваша строка');
+
+            function enterStr(param) {// длина строки не меньше 5 с учетом пробелов
+                if (param.length < 5) {
+                    return function () {
+                        return false;
+                    }
+                } else return function () {// если строка >= 5, то число пробелов не более 2
+                    var counter = 0;
+                    for (var i = 0; i < param.length; i++) {
+                        if (param[i] === '') {
+                            counter++;
+                        }
+                    }
+                    if (counter !== 2) { //если больше 2 пробелов false
+                        return false;
+                    } else if (counter === 2
+                        && param[0] !== ''
+                        && param[param.length - 1] !== ''
+                        && Number(param[0])
+                        && Number(param[param.length - 1])) {
+                        return param; // если число пробелов равно 2 и первый и последний символы не равны пустой строке
+                        //и первый и последний символы - числа, то возвращаем строку
+                    }
+                    return false;
+                }
+            }
+
+            var promptString = enterStr(enterString)();
+
+            function countNumber(param) {
+                if (param) {
+                    var counter = 0;
+                    for (var i = 0; i < param.length; i++) {
+                        if (Number(param[i])) {
+                            counter++;
+                        }
+                    }
+                    if ((param.length - counter) !== 3) {
+                        return function () {
+                            return false;
+                        }
+                    } else return function () {
+                        var stringResult = param[0];
+                        for (var i = 1; i < param.length; i++) {
+                            if (Number(param[i])) {
+                                stringResult += param[i];
+                            }
+                            /////
+                            else if (param[i] === '') {// если после числа идет пробел добавляем его к stringResult
+                                stringResult += param[i];
+                            } else if (param[i] === '+' || param[i] === '-') {
+                                break;// если после числа сразу идет операция + или -, то выход из цикла и false
+                            }
+                            return false;
+                            /////////
+                                }
+                    }
+                }
+            }
+        }
+
+    }
+
+</script>
+</body>
+</html>

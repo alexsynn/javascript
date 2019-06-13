@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Что выведет функция?
+
+        function f() {
+            alert( this );
+        }
+
+    var user = {
+        g: f.bind("Hello")
+    }
+
+    user.g();
+
+
+   //Hello
+</script>
+</body>
+</html>

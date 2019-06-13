@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function CoffeeMachine(power, capacity) {
+        var properties = {
+            power: power,
+            capacity: capacity,
+            waterAmout: 0
+        };
+
+        this.getPower = function () {
+            return properties.power;
+        };
+        this.setWaterAmount = function(amount) {
+            if (amount < 0) {
+                throw new Error("Значение должно быть положительным");
+            }
+            if (amount > capacity) {
+                throw new Error("Нельзя залить воды больше, чем " + properties.capacity);
+            }
+
+            properties.waterAmount = amount;
+        };
+
+        this.getWaterAmount = function() {
+            return properties.waterAmount;
+        };
+
+    }
+
+    var cofeemachine = new CoffeeMachine(1000,400);
+    console.log(cofeemachine.getPower());
+
+
+
+</script>
+</body>
+</html>

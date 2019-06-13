@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var user = {
+        firstName: "Вася",
+        sayHi: function() {
+            alert( this.firstName );
+        }
+    };
+
+    setTimeout(user.sayHi, 1000); // undefined (не Вася!) // Почему user.sayHi без скобок
+
+
+    var f = user.sayHi;  // Почему user.sayHi без скобок
+    setTimeout(f, 1000);
+    //
+    //
+    //
+    //
+
+    for (var prop in user) {
+        if (typeof user[prop] === 'function') { //?????????????????
+            // console.log('prop ' + prop + ' is function' );
+            user[prop] = user[prop].bind(user);
+        } else {
+            // console.log('prop ' + prop + ' is NOT A FUNCTION' );
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // В коде ниже запланирован запуск setTimeout, а затем запущена тяжёлая функция hardWork, выполнение которой занимает более долгое время, чем интервал до срабатывания таймера.
+    //
+    //     Когда сработает setTimeout? Выберите нужный вариант:
+    //
+    //     До выполнения hardWork.
+    //     Во время выполнения hardWork.
+    //     Сразу же по окончании hardWork.
+    //     Через 100 мс после окончания hardWork.
+    //     Что выведет alert в коде ниже?
+
+        setTimeout(function() {
+            console.log( i );
+        }, 100);
+
+    var i;
+
+    function hardWork() {
+        // время выполнения этого кода >100 мс, сам код неважен
+        for (i = 0; i < 1e8; i++) hardWork[i % 2] = i;/////???????????????????????????
+    }
+
+    console.log(hardWork());
+////     Сразу же по окончании hardWork.
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Что выведет этот код?
+
+        function f() {
+            console.log(this.name);
+        }
+
+        f = f.bind( {name: "Вася"} ).bind( {name: "Петя" } );
+    f = f.bind( {name: "Вася"} );
+    f = f.bind( {name: "Петя"} );
+    f();
+
+
+   // f = f.bind( {name: "Вася"} );
+    //f = bind( {name: "Вася"} );
+      //  console.log(f());
+
+</script>
+</body>
+</html>

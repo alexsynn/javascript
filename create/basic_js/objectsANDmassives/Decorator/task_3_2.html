@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function f(x) {
+        return Math.random() * x;
+    }
+
+
+    function checkNumber(value) {
+        return typeof value == 'number';
+    }
+
+
+    function typeCheck(f, checks) {
+        return function () {
+            for (var i = 0; i < arguments.length; i++) {
+                if (!checks[i](arguments[i])) {
+                    console.log("Некорректный тип аргумента ");
+                    return false;
+                }
+            }
+            return f.apply(this, arguments);
+        }
+    }
+
+
+    function makeCaching(f) {
+        var objCach = {};
+        return function () {
+            var arg = arguments;
+
+//////////////////////
+            if (!objCach[arg[0]]) {
+                objCach[arg[0]] = f.apply(this, arguments);
+            }
+            return objCach[arg[0]];
+
+        }
+    }
+
+    var funcCheck = typeCheck(f, [checkNumber]);
+
+    f = makeCaching(funcCheck);
+
+    var a, b;
+
+    a = f(2);
+    b = f(2);
+    console.log(a === b); // true (значение закешировано)
+
+    b = f('uuuuuu4444');
+
+    c = f(11111);
+    e = f(2342);
+
+    g = f(2342);
+    console.log(c === e); // false, другой аргумент => другое значение
+    console.log(e === g); // false, другой аргумент => другое значение
+
+</script>
+</body>
+</html>

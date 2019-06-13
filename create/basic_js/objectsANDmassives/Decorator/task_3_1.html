@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function f(x) {
+        return Math.random() * x; // random для удобства тестирования
+    }
+    // вспомогательная функция для проверки на число
+    function checkNumber(value) {
+        return typeof value == 'number';
+    }
+
+    // декоратор, проверяющий типы для f
+    // второй аргумент checks - массив с функциями для проверки
+    function typeCheck(f, checks) {
+        return function() {
+            for (var i = 0; i < arguments.length; i++) {
+                if (!checks[i](arguments[i])) {
+                    console.log( "Некорректный тип аргумента номер " + i );
+                    //return;///////?????????????????????????????????????
+                }
+            }
+            return f.apply(this, arguments);
+        }
+    }
+
+    // обернём декоратор для проверки
+    funcCheck = typeCheck(f, [checkNumber, checkNumber]); // оба аргумента - числа
+
+    // пользуемся функцией как обычно
+    console.log( funcCheck(1, 2) ); // 3, все хорошо
+
+    // а вот так - будет ошибка
+    console.log(funcCheck(true, null)); // некорректный аргумент номер 0
+    console.log(funcCheck(1, ["array", "in", "sum?!?"])); // некорректный аргумент номер 1
+
+</script>
+</body>
+</html>

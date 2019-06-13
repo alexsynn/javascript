@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function f(x) {
+        return Math.random() * x; // random для удобства тестирования
+    }
+
+    function makeCaching(f) {
+        var objCach = {};
+        return function () {
+            var arg = arguments;
+            //var funcResult = f;
+            if (!objCach[arg[0]]) {
+                objCach[arg[0]] = f.apply(this, arguments);//(arg[0]);
+               return objCach[arg[0]];
+                //f.apply(this, arguments);
+            } else if (arg[0] in objCach) {
+                return objCach[arg[0]];
+            }
+        }
+    }
+
+    f = makeCaching(f);
+
+    var a, b;
+
+    a = f(1);
+    b = f(1);
+    console.log(a === b); // true (значение закешировано)
+
+    b = f(2);
+    //b = f('1');/////?????????????????????????
+    //console.log(b);///?????????????????????
+
+    console.log(a === b); // false, другой аргумент => другое значение
+
+
+
+
+    //Создайте декоратор makeCaching(f), который берет функцию f и возвращает обертку, которая кеширует её результаты.
+
+    /*В этой задаче функция f имеет только один аргумент, и он является числом.
+
+        При первом вызове обертки с определенным значением аргумента – она вызывает f и запоминает её результат.
+        При втором и последующих вызовах с тем же значением аргумента – возвращается сохраненное значение результата.
+        Создайте декоратор makeCaching(f), который берет функцию f и возвращает обертку, которая кеширует её результаты.
+
+        */
+
+
+</script>
+</body>
+</html>

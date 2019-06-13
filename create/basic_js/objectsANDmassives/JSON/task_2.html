@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // Превратите объект team из примера ниже в JSON:
+
+    var leader = {
+        name: "Василий Иванович"
+    };
+
+    var soldier = {
+        name: "Петька"
+    };
+
+    // '$ref: {type: object, content: {   name: "Василий Иванович" , soldier:  $ref }}}'
+    // эти объекты ссылаются друг на друга!
+    leader.soldier = soldier;
+    soldier.leader = leader;
+
+
+    var leader = {
+        name: "Василий Иванович",
+        soldier: soldier
+    };
+
+    var soldier = {
+        name: "Петька",
+        leader: leader
+    };
+
+
+    var team = [leader, soldier];
+
+    //var result = JSON.stringify(team);
+    var result = JSON.stringify(team, function (key, value) {
+        if (key === 'leader') {
+            return 'leader';
+        }
+        if (key === 'soldier') {
+            return 'soldier';
+        }
+        return value;
+    });
+
+    console.log(result);//
+    //if (key === 'leader') {return 'leader';}
+    //[{"name":"Василий Иванович","soldier": $ref1, $ref1_target: $root[0] },{"name":"Петька","leader":"leader"}]
+
+    // obj['$ref1' + '_target']
+
+    //[{"name":"Василий Иванович","soldier": {
+    //   __is_special_parcing__: true,
+    //   type: $ref,
+    //   target: $root[0]
+    //   }
+    //  },{"name":"Петька","leader":"leader"}]
+
+    console.log(typeof result);
+
+    //  team = JSON.parse( result );
+    //     teamNew = JSON.parse(result, function(key, value) {
+    //         if (key === 'leader') {return leader;}
+    //         if (key === 'soldier') {return soldier;}
+    //         return value;
+    //     });
+
+    console.log(result);
+
+
+    // Может ли это сделать прямой вызов JSON.stringify(team)? Если нет, то почему?
+    //     Какой подход вы бы предложили для чтения и восстановления таких объектов?
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    function CoffeeMachine(power, capacity) {
+        var waterAmount = 0;
+        var context = this;
+        var WATER_HEAT_CAPACITY = 4200;
+        var working = false;
+        this._enabled = false;
+
+        function getTimeToBoil() {
+            return waterAmount * WATER_HEAT_CAPACITY * 80 / power;
+        }
+
+        this.setWaterAmount = function (amount) {
+            // ... проверки пропущены для краткости
+            waterAmount = amount;
+        };
+
+        this.getWaterAmount = function (amount) {
+            return waterAmount;
+        };
+
+        function onReady() {
+            alert('Кофе готов!');
+        }
+
+        this.setOnReady = function (func) {
+            onReady = func;
+        };
+
+        this.run = function () {
+            if (this._enabled) {
+                setTimeout(onReady, getTimeToBoil());
+                this._enabled = false;
+            } else {
+                console.log("Кофеварка выключена");
+
+            }
+
+
+        };
+
+        this.enable = function () {
+            this._enabled = true;
+        }
+    }
+
+
+    // var coffeeMachine = new CoffeeMachine(10000);
+    // coffeeMachine.run(); // ошибка, кофеварка выключена!
+
+    var coffeeMachine = new CoffeeMachine(10000);
+    coffeeMachine.enable();
+    coffeeMachine.run(); // ...Кофе готов!
+</script>
+</body>
+</html>

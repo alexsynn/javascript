@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // В свойство функции записано значение. Изменится ли оно после применения bind? Обоснуйте ответ.
+
+    function sayHi() {
+        console.log(this.name);
+        console.log('this');
+        console.log(this);
+    }
+    sayHi();
+
+    sayHi.test = 5;
+    console.log(sayHi.test); // 5
+
+    var bound = sayHi.bind({
+        name: "Вася"
+    });
+
+    console.log(bound());// undefind нет return
+    console.log(bound.test); // что выведет? почему?
+
+    //Ответ: undefind
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    /*
+    Строковый буфер с очисткой
+важность: 5
+Добавьте буферу из решения задачи Функция - строковый буфер метод buffer.clear(),
+который будет очищать текущее содержимое буфера:
+
+
+function makeBuffer() {
+  ...ваш код...
+}
+
+var buffer = makeBuffer();
+
+buffer("Тест");
+buffer(" тебя не съест ");
+alert( buffer() ); // Тест тебя не съест
+
+buffer.clear();
+
+alert( buffer() ); // ""
+     */
+    function makeBuffer() {
+        var concat = '';
+
+        function result(value) {
+            if (value === undefined) {
+                value = '';
+            }
+            value = '' + value;
+            concat += value;
+            return concat;
+        }
+
+        result.clear = function () {
+            if (concat !== '') {
+                concat = '';
+                return concat;
+            }
+        }
+        return result;
+    }
+
+    var buffer = makeBuffer();
+
+    buffer('Замыкания');
+    buffer(' Использовать');
+    buffer(' Нужно!');
+
+    console.log('before clear', buffer()); // Замыкания Использовать Нужно!
+
+    buffer.clear();
+    console.log('after clear', buffer()); // Замыкания Использовать Нужно!
+
+
+</script>
+</body>
+</html>

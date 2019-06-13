@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    var x = {firstName: 'zzz'};
+    // this = x;
+
+
+    var user = {
+        firstName: "Вася",
+        f: function (a, b, c) {
+            console.log(this.firstName + a + b + c);
+        }
+    };
+
+    var admin = {
+        firstName: "Админ",
+        g: function (a, b, c) {
+            console.log(this.firstName + a + b + c);
+        }
+    };
+
+    var globalObject = this;
+    console.log(globalObject);
+    var result = admin.g.call(user, 4, 2, 3);
+    var result1 = admin.g.apply(user, [5, 2, 3]);
+
+    var bound = admin.g.bind(user);
+    bound(6, 2, 3);
+    console.log("**************************");
+    //console.log(result());
+    // this равен объекту перед точкой:
+    //user.f(); // Вася
+    //admin.g(); // Админ
+    //admin['g'](); // Админ (не важно, доступ к объекту через точку или квадратные скобки)
+
+
+</script>
+</body>
+</html>
+
+
+
+

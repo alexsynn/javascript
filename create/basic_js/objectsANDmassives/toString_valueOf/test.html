@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var foo = {
+        toString: function() {
+            return 'foo';
+        },
+        valueOf: function() {
+            return 2;
+        }
+    };
+
+    alert( foo );
+    alert( foo + 1 );
+    alert( foo + "3" );
+
+    alert([['a']][0][0]);
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var n;
+    n = +prompt('Enter n ', '');
+    alert(sumto(n));
+
+    function sumto(n) {
+
+        if (n !== 1) {
+            return n + sumto(n - 1);
+        }
+
+        else {
+            return n;
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

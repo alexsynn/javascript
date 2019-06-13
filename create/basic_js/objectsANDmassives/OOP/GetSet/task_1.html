@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // Напишите конструктор User для создания объектов:
+    //
+    //     С приватными свойствами имя firstName и фамилия surname.
+    //     С сеттерами для этих свойств.
+    //     С геттером getFullName(), который возвращает полное имя.
+    //     Должен работать так:
+
+    function User() {
+        var firstname, surname;
+
+        this.setFirstName = function () {
+            if (arguments.length) {
+                firstname = arguments[0];
+            } else throw new Error("Enter name");
+        };
+
+        this.setSurname = function () {
+            if (arguments.length) {
+                surname = arguments[0];
+            } else throw new Error("Enter surname");
+        };
+
+        this.getFullName = function () {
+            return (firstname + ' ' + surname);
+        }
+    }
+
+    var user = new User();
+    user.setFirstName("Петя");
+    user.setSurname("Иванов");
+
+    console.log(user.getFullName()); // Петя Иванов
+
+</script>
+</body>
+</html>

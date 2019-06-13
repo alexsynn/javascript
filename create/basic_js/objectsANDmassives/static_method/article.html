@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+
+
+    function Article() {
+
+      if (Article.count === undefined) {
+          Article.count = 0;
+      }
+
+        Article.count++;
+        this.created = new Date();
+        Article.save_Last_Date = this.created;
+
+    }
+
+    Article.dateObj = function (count_param) {
+        return arr_Of_Created[count_param - 1];
+    }
+
+    Article.showStats = function () {
+        console.log('Всего: ' + this.count + ' Последняя: ' + this.save_Last_Date);
+    }
+
+    new Article();
+    Article.showStats(); // Всего: 3, Последняя: (дата)
+for (var i = 0; i < 10000; i++) {
+    console.log(i);
+}
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+    new Article();
+
+    Article.showStats(); // Всего: 2, Последняя: (дата)
+
+    new Article();
+
+    Article.showStats(); // Всего: 3, Последняя: (дата)
+
+</script>
+</body>
+</html>

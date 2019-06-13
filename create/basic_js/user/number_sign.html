@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>number sign</title>
+</head>
+<body>
+<script>
+
+    var Enter_Number = prompt("Введите любое число", "");
+
+    if (Enter_Number > 0) {
+        message = "Вы ввели положительное число!";
+    }
+    else if (Enter_Number < 0) {
+        message = "Вы ввели отрицательное число!";
+    }
+    else if (Enter_Number === 0) {
+        message = "Вы ввели число нуль!";
+    }
+    alert(message);
+
+
+    // var message = (Enter_Number <0) ? "Вы ввели отрицательное число!" :
+    // (Enter_Number > 0) ? "Вы ввели положительное число!" :
+    // "Вы ввели число нуль!";
+    // alert( message );
+
+
+</script>
+</body>
+</html>

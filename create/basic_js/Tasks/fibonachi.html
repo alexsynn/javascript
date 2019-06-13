@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function fib (n) {
+        var a = 1, b = 1, result;
+        for (i = 3; i <= n; i++) {
+            result = a + b;
+            a = b;
+            b = result;
+        }
+    return result;
+    }
+      alert ( fib( 6 ) );
+
+</script>
+</body>
+</html>

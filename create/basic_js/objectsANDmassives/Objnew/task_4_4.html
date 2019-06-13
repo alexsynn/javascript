@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    function Calculator() {
+
+        var operation = [
+            {
+                code: '+',
+                callback: function (a, b) {
+                    return a - b;
+                }
+            },
+
+            {
+                code: '-',
+                callback: function (a, b) {
+                    return a + b;
+                }
+            }
+        ];
+
+        this.addMethod = function (name, func) {
+
+            operation.push(
+                {
+                    code: name,
+                    callback: func
+                }
+            )
+        };
+
+        this.calculate = function (paramStr) {
+
+            function getOperandsAndOperator(paramStr) {
+                var arr = paramStr.split(' ');
+                if (arr.length === 3) {
+                    return {
+                        leftOperand: arr[0],
+                        operand: arr[1],
+                        rigthOperand: arr[2]
+                    }
+                }
+                return false;
+            }
+
+
+            function findOperand(operationCode) {
+                var foundOperation = false;
+                for (var i = 0; i < operation.length; i++) {
+                    if (operationCode === operation[i].code) {
+                        foundOperation = operationCode;
+                    }
+                }
+                return foundOperation;
+            }
+
+
+            var dataOperandsAndOperation = getOperandsAndOperator(paramStr);
+
+            function checkNumerc(dataOperandsAndOperation) {
+
+                if (dataOperandsAndOperation) {
+                    if (isNaN(dataOperandsAndOperation.leftOperand) === false
+                        && isNaN(dataOperandsAndOperation.rigthOperand) === false) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+
+            var checkNum = checkNumerc(dataOperandsAndOperation);
+
+            if (dataOperandsAndOperation === false || checkNum === false) {
+                console.log('error invalid element count');
+                return false;
+            }
+
+            var activeOperation = findOperand(dataOperandsAndOperation.operand);
+
+            if (activeOperation === false) {
+                console.log('error no such operation');
+                return '';
+            } else {
+                for (var i = 0; i < operation.length; i++) {
+                    if (activeOperation === operation[i].code) {
+                        return operation[i].callback(
+                            dataOperandsAndOperation.leftOperand,
+                            dataOperandsAndOperation.rigthOperand
+                        );
+                    }
+                }
+            }
+        }
+
+
+    }///////
+
+    var powerCalc = new Calculator;
+
+    powerCalc.addMethod("*", function (a, b) {
+        return a * b;
+    });
+    powerCalc.addMethod("/", function (a, b) {
+        if (b === '0') {
+            return 'ERROR';
+        } else {
+            return a / b;
+        }
+    });
+    powerCalc.addMethod("**", function (a, b) {
+        return Math.pow(a, b);
+    });
+
+    var result = powerCalc.calculate("7 / 0");
+    console.log(result); //
+
+</script>
+</body>
+</html>

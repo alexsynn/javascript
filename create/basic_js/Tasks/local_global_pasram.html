@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+<script>
+    'use strict';
+    var message_global = '€ глобал';
+
+    function showMessage(message_parameter) {
+        message_global = '€ локальна€ переменна€(нет глобальна€)';
+      var   message_local = '€ локальна€ переменна€ (да локальна€)';
+        alert(message_parameter);
+        alert('message_global = ' + message_global);
+        alert('message_local = ' + message_local);
+    }
+
+    showMessage('ѕривет, € параметр1'); //
+    showMessage('ѕривет, € параметр2'); //
+    showMessage('ѕривет, € параметр3'); //
+
+    alert(message);
+
+</script>
+</body>
+
+</html>

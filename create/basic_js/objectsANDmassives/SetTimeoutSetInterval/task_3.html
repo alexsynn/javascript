@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // Как мы знаем, есть два варианта реализации такой подсветки:
+    //
+    //     Через setInterval, с остановкой по окончании работы:
+    //
+    //     timer = setInterval(function() {
+    //         if (есть еще что подсветить) highlight();
+    //     else clearInterval(timer);
+    //     }, 10);
+    // Через рекурсивный setTimeout:
+    //
+    //     setTimeout(function go() {
+    //         highlight();
+    //         if (есть еще что подсветить) setTimeout(go, 10);
+    //     }, 10);
+    // Какой из них стоит использовать? Почему?
+    //
+    //     решение Через рекурсивный setTimeout
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    function maxSalary(obj) {
+        var maxsal = 0;
+        var name;
+        var counter = Object.keys(obj).length;
+
+        if (counter !== 0) {
+            for (var key in obj) {
+                if (obj[key] > maxsal) {
+                    maxsal = obj[key];
+                    name = key;
+                } else continue;
+            }
+            alert('Имя: ' + name + ' Зарплата: ' + maxsal);
+        } else {
+            alert('В базе нет сотрудников');
+        }
+    }
+
+    var emptyobj = {};
+    var salaries = {
+        "Вася": 100,
+        "Петя": 300,
+        "Даша": 250,
+        "Даша4f": 5000,
+        "Дашаggh": 250,
+        "Дашаzs": 2540
+    };
+
+    maxSalary(salaries);
+    maxSalary(emptyobj);
+    // ... ваш код выведет "Петя"
+
+    /*        var keys;
+
+
+var counter = Object.keys(obj).length;
+       var maxsal = obj[0];
+       alert(maxsal);
+       if (counter !== 0) {
+
+           for (var i=1; i<=counter-1; i++){
+               if (maxsal>obj[i]) continue;
+               else maxsal = obj[i];
+           }
+                   }
+       else {alert('В базе нет сотрудников');}
+
+       for (var i=0; i<=counter-1; i++){
+   if (obj[i]!==maxsal) continue;
+   else {
+       alert(obj[i]);
+       break;
+   }
+}
+
+   }*/
+</script>
+
+</body>
+</html>

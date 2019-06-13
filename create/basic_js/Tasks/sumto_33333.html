@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    'use strict';
+    function pow(x, n) {
+
+        if (n != 1) { // пока n != 1, сводить вычисление pow(x,n) к pow(x,n-1)
+            return x * pow(x, n - 1);
+        } else {
+            return x;
+        }
+    }
+
+    alert( pow(7, 3) ); // 8
+
+
+</script>
+</body>
+</html>

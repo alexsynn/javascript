@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+///???????????????? Разобрать готовые решения
+    function makeArmy() {
+
+        var shooters = [];
+
+        for (var i = 0; i <= 10; i++) {
+            var shooter = function(localI) {
+                return function() {
+                    console.log(localI);
+                }
+            };
+            shooters.push(shooter(i));
+        }
+
+        return shooters;
+    }
+
+    var army = makeArmy();
+
+    army[0]();
+    army[1]();
+    army[2]();
+    army[3]();
+    army[4]();
+    army[5]();
+    army[6]();
+    army[7]();
+    army[8]();
+    army[9]();
+    army[10]();
+
+</script>
+</body>
+</html>

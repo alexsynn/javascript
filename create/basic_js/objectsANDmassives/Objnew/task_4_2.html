@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function Calculator() {///////
+
+        this.calculate = function (paramStr) {//%%%%%%%%%%%%
+
+            if (paramStr.length >= 5
+                && paramStr[0] !== ''
+                && paramStr[paramStr.length - 1] !== '') {
+                var enterStr = paramStr;
+            } else {
+                enterStr = '';
+            }
+
+            function counter(param) {
+                var count = 0;
+                for (var i = 0; i < param.length; i++) {
+                    if (Number(param[i])) {
+                        count++;
+                    }
+                }
+                return count;
+            }
+
+            function checkSubstrPlus(paramStr, subStr) {
+                var count = counter(paramStr);
+                if (paramStr.indexOf(subStr) && (count + subStr.length === paramStr.length)) {
+
+                    var arr = paramStr.split(subStr);
+                    if (subStr === ' + ') {
+                        var checkResult = (+arr[0]) + (+arr[1]);
+                    }
+                    return checkResult;
+                }
+                return false;
+            }
+
+            function checkSubstrMinus(paramStr, subStr) {
+                var count = counter(paramStr);
+                if (paramStr.indexOf(subStr) && (count + subStr.length === paramStr.length)) {
+
+                    var arr = paramStr.split(subStr);
+                    if (subStr === ' - ') {
+                        var checkResult = (+arr[0]) - (+arr[1]);
+                    }
+
+                    return checkResult;
+
+                }
+                return false;
+            }
+
+            var result = checkSubstrPlus(enterStr, ' + ');
+            if (result !== false) {
+                return result;
+            }
+            result = checkSubstrMinus(enterStr, ' - ');
+            if (result !== false) {
+                return result;
+            }
+
+            return false;
+        }//%%%%%%%%%%%%%
+
+    }///////
+
+    var calc = new Calculator;
+
+    console.log(calc.calculate("3 + 7")); // 10
+
+    // "2 + 345".split(' ')
+</script>
+</body>
+</html>

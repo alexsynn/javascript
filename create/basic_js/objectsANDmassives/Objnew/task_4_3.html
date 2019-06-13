@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // var obj = {
+    //     code: '-',
+    //     callback: function (a, b) {
+    //         return a - b;
+    //     }
+    // };
+    //
+    // Object.defineProperty(obj, 'text', {
+    //     value: '',
+    //     writable: false,
+    //     configurable: false,
+    //     enumerable: true,
+    //     get: function () {
+    //         return this.text;
+    //     },
+    //     set: function (value) {
+    //         this.text = value;
+    //     },
+    // });
+    //
+    //
+    // Object.defineProperty(obj, 'codeDescription', {
+    //     value: '',
+    //     writable: false,
+    //     configurable: false,
+    //     enumerable: true,
+    //     get: function () {
+    //         return this.codeDescription;
+    //     },
+    //     set: function (value) {
+    //         this.codeDescription = value;
+    //     },
+    // });
+    //
+    // obj.text = 'zzz';
+    // //obj.text = 'operation "zzz"'
+
+    function Calculator() {///////
+        var operations = [
+            {
+                code: '-',
+                callback: function (a, b) {
+                    return a - b;
+                }
+            },
+            {
+                code: '+',
+                callback: function (a, b) {
+                    return a + b;
+                }
+            }
+        ];
+
+
+        this.addMethod = function (name, func) {
+            operations.push(
+                {
+                    code: name,
+                    callback: func
+                }
+            )
+        };
+
+        this.calculate = function (paramStr) {//%%%%%%%%%%%%
+
+
+            function getOperandsAndOperation(paramsStr) {
+                var items = paramsStr.split(' ');
+                if (items.length === 3) {
+                    return {
+                        left: items[0],
+                        operation: items[1],
+                        right: items[2],
+                    };
+                }
+                return false;
+            }
+
+
+            function findOperation(operationCode) {
+                var foundOperation = false;
+                operations.forEach(function (operation) {
+                    if (operation.code === operationCode) {
+                        foundOperation = operation;
+                    }
+                });
+                return foundOperation;
+            }
+
+            var argumentsAndOperation = getOperandsAndOperation(paramStr);
+            if (argumentsAndOperation === false) {
+                console.log('error invalid element count');
+                return '';
+            }
+
+
+            var activeOperation = findOperation(argumentsAndOperation.operation);
+
+            if (activeOperation === false) {
+                console.log('error no such operation');
+                return '';
+
+            }
+
+            return activeOperation.callback(argumentsAndOperation.left, argumentsAndOperation.right);
+        }//%%%%%%%%%%%%%
+
+    }///////
+
+    var powerCalc = new Calculator;
+
+    powerCalc.addMethod("*", function (a, b) {
+        return a * b;
+    });
+    powerCalc.addMethod("/", function (a, b) {
+        return a / b;
+    });
+    powerCalc.addMethod("**", function (a, b) {
+        return Math.pow(a, b);
+    });
+
+    var result = powerCalc.calculate("2 ** 3");
+    alert(result); // 8
+
+</script>
+</body>
+</html>

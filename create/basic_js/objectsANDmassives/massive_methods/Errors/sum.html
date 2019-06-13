@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    function collectDataIntoArray() {
+        var arr = [];
+
+        while (true) {
+            var value = prompt('Enter number', '');
+
+            if (value === null || value === '' || isNaN(value)) break;
+            arr.push(+value);
+        }
+        return arr;
+    }
+
+    function calculateSum(arr) {
+
+        var sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+            sum = sum + arr[i];
+        }
+
+        return sum;
+    }
+
+
+    var collectedArr = collectDataIntoArray();
+    console.log(collectedArr);
+    var calculatedSumOfArr = calculateSum(collectedArr);
+    console.log(calculatedSumOfArr);
+
+
+</script>
+</body>
+</html>

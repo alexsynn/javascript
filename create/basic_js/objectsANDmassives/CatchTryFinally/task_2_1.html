@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  'use strict';
+    // Напишите интерфейс, который принимает математическое выражение (в prompt)
+    // и выводит результат его вычисления через eval.
+    //
+    //     При ошибке нужно выводить сообщение и просить переввести выражение.
+    //
+    //     Ошибкой считается не только некорректное выражение, такое как 2+, но и выражение,
+    //     возвращающее NaN, например 0/0.
+
+
+    function calculator() {
+
+        var enterData = prompt('Введите числовое выражение', '5+53');
+        var result = eval(enterData);
+        try {
+            if (isNaN(result) || result === Infinity) {
+                throw err;
+
+            } else {
+                alert(result);
+            }
+        } catch (err) {
+            alert('Ошибка ' + err.name);
+            throw err;
+        } finally {
+            alert('Спасибо, что выбрали данную программу!')
+        }
+
+    }
+
+    calculator();
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function sum() { // суммирует аргументы: sum(1,2,3) = 6
+        return [].reduce.call(arguments, function (a, b) {
+            return a + b;
+        });
+    }
+
+    function mul() { // перемножает аргументы: mul(2,3,4) = 24
+        return [].reduce.callz(arguments, function (a, b) {
+            return a * b;
+        });
+    }
+
+    function applyAll() {
+        arguments.slice = [].slice;
+        var arrArg = arguments.slice(1);
+
+        var func = arguments[0];
+        return func.apply(this, arrArg);
+    }
+
+
+    // // Применить Math.max к аргументам 2, -2, 3
+    // console.log(applyAll(Math.max, 2, -2, 3)); // 3
+    //
+    // // Применить Math.min к аргументам 2, -2, 3
+    // console.log(applyAll(Math.min, 2, -2, 3)); // -2
+    //
+
+    console.log(applyAll(sum, 1, 2, 3, 10)); // -> sum(1, 2, 3) = 16
+
+    setTimeout(function () {
+            console.log(applyAll(sum, 1, 2, 3, 10000)); // -> sum(1, 2, 3) = 6
+           try {
+               console.log(applyAll(mul, 2, 3, 4)); // -> mul(2, 3, 4) = 24
+           }
+            catch (err) {
+              // err.name = "[errsettimeout]" +  err.name ;
+
+               console.log("[errsettimeout]", err);
+            }
+
+            console.log(applyAll(sum, 1, 2, 3, 100000)); // -> sum(1, 2, 3) = 6
+        }
+        , 3000);
+
+    console.log(applyAll(sum, 1, 2, 3, 100)); // -> sum(1, 2, 3) = 106
+
+
+    setTimeout(function () {
+        console.log(applyAll(sum, 1, 2, 3, 1000)); // -> sum(1, 2, 3) = 6
+    }, 4000);
+    try {
+        console.log(applyAll(mul, 7, 1)); // -> mul(2, 3, 4) = 24
+    } catch (e) {
+        console.log(e);
+    }
+
+    // var x = (Math.max, -2, 3);
+    // console.log (x);
+</script>
+</body>
+</html>

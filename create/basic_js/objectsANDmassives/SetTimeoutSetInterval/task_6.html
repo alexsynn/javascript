@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   function Runner() {
+
+       this.steps = 0;
+       this.step = function () {
+           this.steps++;
+       }
+   }
+   var runner1 = new Runner();
+   var runner2 = new Runner();
+
+   // первый?
+
+   setInterval(function() {
+       runner1.step();
+   }, 15);
+
+   // или второй?
+
+   setTimeout(function go() {
+       runner2.step();
+       setTimeout(go, 15);
+   }, 15);
+
+   setTimeout(function() {
+       console.log('First');
+       console.log( runner1.steps );
+       console.log('Second');
+       console.log( runner2.steps );
+   }, 5000);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+
+    function User(fullName) {
+
+        this.fullName = fullName;
+
+        Object.defineProperty(User, "firstName", {
+
+            get: function () {
+                return this.firstName;
+            },
+
+            set: function (value) {
+                var split = value.split(' ');
+                this.firstName = split[0];
+            }
+        });
+
+        Object.defineProperty(User, "lastName", {
+
+            get: function () {
+                return this.lastName;
+            },
+
+            set: function (value) {
+                var split = value.split(' ');
+                this.lastName = split[1];
+            }
+        });
+
+
+    }
+
+
+    var vasya = new User("Василий Попкин");
+
+    // чтение firstName/lastName
+    console.log(vasya.firstName); // Василий
+    console.log(vasya.lastName); // Попкин
+
+    // запись в lastName
+    vasya.lastName = 'Сидоров';
+
+    console.log(vasya.fullName); // Василий Сидоров
+
+</script>
+</body>
+</html>

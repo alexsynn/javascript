@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function filter(arr, func) {
+        var arrResult = [];
+        for (var i = 0; i < arr.length; i++) {
+            var result = arr[i];
+            if (func(result)) {
+                arrResult.push(result);
+            }
+        }
+        return arrResult;
+
+    }
+
+    function inBetween(a, b) {
+        return function (x) {
+            return x >= a && x <= b;
+        };
+    }
+
+
+    function inArray(array) {
+        return function (param) {
+            //   return array.indexOf(param) !== -1;
+            //}
+
+            for (var j = 0; j < array.length; j++) {
+
+                if (array[j] === param) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    var arr = [1, 2, 3, 4, 5, 6, 7];
+    console.log(filter(arr, inBetween(3, 6)));
+    console.log(filter(arr, inArray([1, 2, 10])));
+</script>
+</body>
+</html>

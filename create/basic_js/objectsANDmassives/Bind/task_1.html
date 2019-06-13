@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function bind(func, context /*, args*/) {
+        var bindArgs = [].slice.call(arguments, 2); // (1)
+        function wrapper() {                        // (2)
+            var args = [].slice.call(arguments);
+            var unshiftArgs = bindArgs.concat(args);  // (3)
+            return func.apply(context, unshiftArgs);  // (4)
+        }
+        return wrapper;
+    }
+</script>
+</body>
+</html>

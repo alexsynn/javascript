@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function pow(x,n) {
+
+       var x1=1;
+       var i;
+       for (i=1; i<=n; i++){
+            x1 = x1 * x;
+       }
+      // alert(x1);
+       return x1;
+
+    }
+
+    var x = +prompt('Enter x','');
+    var n = +prompt('Enter n','');
+    alert(pow(x, n));
+    </script>
+</body>
+</html>

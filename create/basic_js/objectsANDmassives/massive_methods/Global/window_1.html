@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var money = 0;
+
+    var topMoney = 1000;
+    function createMoneyPrintingMachine() {
+
+        var totalMoney = 100;
+        var presidentMoney = 10000000;
+        return function (desiredAmount) {
+            if (totalMoney > desiredAmount) {
+                totalMoney = totalMoney - desiredAmount;
+                return desiredAmount;
+            } else {
+                console.log("Not enough money");
+                return 0;
+            }
+        }
+
+
+    }
+
+    var moneyMachine = createMoneyPrintingMachine();
+
+    money = moneyMachine(40);
+    console.log(money);
+
+    money = money + moneyMachine(50);
+    console.log(money);
+
+    money = money + moneyMachine(200);
+    console.log(money);
+</script>
+</body>
+</html>

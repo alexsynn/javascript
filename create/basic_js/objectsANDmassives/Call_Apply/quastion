@@ -1,0 +1,18 @@
+В современном стандарте call/apply передают this «как есть». А в старом, без use strict, при указании первого аргумента null или undefined в call/apply, функция получает this = window, например:
+
+Современный стандарт:
+
+
+function f() {
+  "use strict";
+  alert( this ); // null
+}
+
+f.call(null);
+Без use strict:
+
+ function f() {
+  alert( this ); // window
+}
+
+f.call(null);

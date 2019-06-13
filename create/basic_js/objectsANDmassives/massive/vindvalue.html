@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var arrfind = ["test", 2, 1.5, false];
+
+    function findnumber(arr, value) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] === value) return i;
+        }
+        return -1;
+
+    }
+
+
+    alert(findnumber(arrfind, "test")); // 0
+    alert(findnumber(arrfind, 2)); // 1
+    alert(findnumber(arrfind, 1.5)); // 2
+    alert(findnumber(arrfind, 0)); // -1
+
+</script>
+</body>
+</html>

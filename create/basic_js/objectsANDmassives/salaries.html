@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    "use strict";
+
+    function salariesSum(obj) {
+        var sum = 0;
+        var value = Object.keys(obj).length;
+        if (value !== 0) {
+            for (var key in obj) {
+                sum += obj[key];
+            }
+        } else {
+            alert('Массив пустой');
+        }
+        alert(sum);
+    }
+
+    var emptyobj = {};
+    var salaries = {
+        "Вася": 100,
+        "Петя": 300,
+        "Даша": 250
+    };
+
+    salariesSum(salaries);
+    salariesSum(emptyobj);
+    //... ваш код выведет 650
+</script>
+</body>
+</html>

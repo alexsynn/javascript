@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    //??????????????????как передать параметр функции
+
+    function ucFirsr() {
+
+        var str = prompt('Enter string', '');
+
+        if (str != '') {
+            var firstChar = (str.substring(0,1)).toUpperCase();
+
+            return (firstChar + str.substring(1));
+        }
+        else alert('The string is empty');
+
+    }
+    alert(ucFirsr());
+
+
+
+    /* function f1() {
+
+         var str = prompt('Enter string', '');
+
+         if (str!='') {
+             return str;
+             alert(ucFirsr(str));}
+         else alert('Where is a string?');}
+
+
+
+     function f1() {
+
+         var str = prompt('Enter string', '');
+
+     if (str!='') {alert(ucFirsr(str));}
+     else alert('Where is a string?');}
+
+
+    function ucFirsr(str) {
+
+        var firstChar = (str.substring(0,1)).toUpperCase();
+
+        return (firstChar + str.substring(1);
+
+    }
+
+f1();*/
+
+
+</script>
+
+</body>
+</html>

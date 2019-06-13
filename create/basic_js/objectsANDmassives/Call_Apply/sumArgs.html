@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function sumArgs_1() {
+        var args = [].slice.call(arguments);
+        var result = args.reduce(function (sumArg, itemCurrent) {
+            return sumArg + itemCurrent;
+        });
+        return result;
+
+    }
+
+    function sumArgs_2() {
+       var result = [].reduce.call(arguments, function (sumArg, itemCurrent) {
+           return sumArg + itemCurrent;});
+return result;
+    }
+
+
+    function sumArgs_3() {
+
+        arguments.reduce = [].reduce;
+        var result = arguments.reduce(function (sumArg, itemCurrent) {
+            return sumArg + itemCurrent;
+        });
+
+        return result;
+    }
+
+    console.log(sumArgs_1(1, 2, 3)); // 6, аргументы переданы через запятую, без массива
+    console.log(sumArgs_2(1, 2, 3));
+    console.log(sumArgs_3(1, 2, 3));
+
+
+</script>
+</body>
+</html>

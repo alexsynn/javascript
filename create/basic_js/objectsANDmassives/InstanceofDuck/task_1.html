@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // Полиморфная функция formatDate
+    // важность: 5
+    // Напишите функцию formatDate(date), которая возвращает дату в формате dd.mm.yy.
+    //
+    //     Ее первый аргумент должен содержать дату в одном из видов:
+    //
+    //     Как объект Date.
+    //     Как строку, например yyyy-mm-dd или другую в стандартном формате даты.
+    //     Как число секунд с 01.01.1970.
+    //     Как массив [гггг, мм, дд], месяц начинается с нуля
+    //  Для этого вам понадобится определить тип данных аргумента и, при необходимости,
+    //  преобразовать входные данные в нужный формат.
+    //
+    //     Пример работы:
+
+    function format(dateOrMonth) {
+        var str = '' + dateOrMonth;
+
+        if (str.length === 1) {
+            return ('0' + str);
+        }
+        return str;
+    }
+
+
+    function formatDate(date) {
+
+        //[1, 2, 2014]
+        //[2, 1, 2014]
+        //[2014, 1, 2]
+        if (Array.isArray(date)) {
+            var newArr = [];
+            // dd
+            newArr[0] = format(date[2]);
+            // mm
+            newArr[1] = format(date[1] + 1);
+            // yy
+            newArr[2] = ('' + date[0]).slice(2);
+            return newArr.join('. ');
+
+        } else if (date.getDate) {
+            var dateOut = format(date.getDate());
+            var monthOut = format(date.getMonth() + 1);
+            var yearOut = ("" + date.getFullYear()).slice(2);
+            return (dateOut + ". " + monthOut + ". " + yearOut);
+
+        } else if (typeof date === 'string') {
+            var result = [];
+            var arr = date.split('-');
+            // dd
+            result[0] = format(arr[2]);
+            // mm
+            result[1] = format(arr[1]);
+            // yy
+            result[2] = ('' + arr[0]).slice(2);
+            return (result[0] + ". " + result[1] + ". " + result[2]);
+
+        } else if (typeof date === 'number') {
+            var startDate = new Date(1970, 0, 1);
+
+            var dateDesire = new Date(startDate.setSeconds(startDate.getSeconds() + date));
+
+            var year = (dateDesire.getFullYear() + '').slice(2);
+            var month = format(dateDesire.getMonth() + 1);
+            var day = format(dateDesire.getDate());
+            return day + ". "+ month + ". "+ year;
+        }
+    }
+
+
+    console.log(formatDate('2011-10-02')); // 02.10.11
+    console.log(formatDate(1234567890)); // 14.02.09
+    console.log(formatDate([2014, 0, 1])); // 01.01.14
+    console.log(formatDate(new Date(2014, 0, 1))); // 01.01.14
+</script>
+</body>
+</html>
